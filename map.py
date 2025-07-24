@@ -3,14 +3,12 @@
 # 2 - река
 # 3 - госпиталь 
 # 4 - апгрейд-шоп
-#
 
 CELL_TYPES = "⬜🌲🌊🚑🚀"
 
 class Map:
-    
+    # TODO
     # def generate_rivers():
-
     # def generate_forest():
 
     def print_map(self):
@@ -32,6 +30,3 @@ class Map:
         self.w = w
         self.h = h 
         self.cells = [[0 for i in range(w)] for j in range(h)] 
-
-tmp = Map(20, 10)   
-tmp.print_map()
