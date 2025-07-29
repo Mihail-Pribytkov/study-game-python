@@ -5,8 +5,9 @@ from utils import randbool, randcell, randcell2
 # 2 - река
 # 3 - госпиталь 
 # 4 - апгрейд-шоп
+# 5 - огонь
 
-CELL_TYPES = "⬜🌲🌊🚑🚀"
+CELL_TYPES = "⬜🌲🌊🚑🚀🔥"
 
 class Map:
     def generate_river(self, l):
@@ -27,6 +28,12 @@ class Map:
                 if randbool(r, mxr):
                     self.cells[ri][ci] = 1
 
+    def generate_tree(self):
+        c = randcell(self.w, self.h)
+        cx, cy = c[0], c[1]
+        if (self.check_bounds(cx, cy) and self.cells[cx][cy] == 0):
+            self.cells[cx][cy] = 1
+
     def print_map(self):
         print("🏁" * (self.w + 2))
         for row in self.cells:
@@ -37,6 +44,12 @@ class Map:
             print("🏁")
         print("🏁" * (self.w + 2))
 
+    def add_fire(self):
+        c = randcell(self.w, self.h)
+        cx, cy = c[0], c[1]
+        if self.cells[cx][cy] == 1:
+            self.cells[cx][cy] = 5
+
     def check_bounds(self, x, y):
         if (x < 0 or y < 0 or x >= self.h or y >= self.w):
             return False
@@ -46,11 +59,3 @@ class Map:
         self.w = w
         self.h = h 
         self.cells = [[0 for i in range(w)] for j in range(h)] 
-
-
-tmp = Map(10, 10)
-tmp.generate_forest(3, 10)
-tmp.generate_river(10)
-tmp.generate_river(30)
-
-tmp.print_map()
