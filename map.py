@@ -9,6 +9,7 @@ from utils import randbool, randcell, randcell2
 
 CELL_TYPES = "⬜🌲🌊🚑🚀🔥"
 
+
 class Map:
     def generate_river(self, l):
         rc = randcell(self.w, self.h)
@@ -57,5 +58,5 @@ class Map:
 
     def __init__(self, w, h):
         self.w = w
-        self.h = h 
-        self.cells = [[0 for i in range(w)] for j in range(h)] 
+        self.h = h
+        self.cells = [[0 for i in range(w)] for j in range(h)]

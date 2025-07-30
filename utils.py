@@ -1,13 +1,16 @@
 from random import randint as rand
 
+
 def randbool(r, mxr):
     t = rand(0, mxr)
     return (t <= r)
 
+
 def randcell(w, h):
     tw = rand(0, w - 1)
-    th = rand(0, h -1)
+    th = rand(0, h - 1)
     return (tw, th)
+
 
 # 0 - up
 # 1 - down
