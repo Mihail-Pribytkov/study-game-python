@@ -36,14 +36,15 @@ class Map:
     def generate_river(self, l):
         rc = randcell(self.w, self.h)
         rx, ry = rc[0], rc[1]
-        self.cells[ry][rx] = 2
-        while l > 0:
-            rc2 = randcell2(rx, ry)
-            rx2, ry2 = rc2[0], rc2[1]
-            if (self.check_bounds(rx2, ry2)):
-                self.cells[ry2][rx2] = 2
-                rx, ry = rx2, ry2
-                l -= 1
+        if (self.check_bounds(rx, ry)):
+            self.cells[ry][rx] = 2
+            while l > 0:
+                rc2 = randcell2(rx, ry)
+                rx2, ry2 = rc2[0], rc2[1]
+                if (self.check_bounds(rx2, ry2)):
+                    self.cells[ry2][rx2] = 2
+                    rx, ry = rx2, ry2
+                    l -= 1
     def generate_forest(self, r, mxr):
         for ri in range(self.h):
             for ci in range(self.w):
@@ -59,7 +60,7 @@ class Map:
     def add_fire(self):
         c = randcell(self.w, self.h)
         cx, cy = c[0], c[1]
-        if self.cells[cy][cx] == 1:
+        if self.check_bounds(cx, cy) and self.cells[cy][cx] == 1:
             self.cells[cy][cx] = 5
     def update_fires(self):
         for ri in range(self.h):

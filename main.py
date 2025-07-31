@@ -13,7 +13,6 @@ tmp.generate_forest(3, 10)
 tmp.generate_river(10)
 tmp.generate_river(10)
 tmp.add_fire()
-tmp.print_map()
 
 helico = Helico(MAP_W, MAP_H)
 
