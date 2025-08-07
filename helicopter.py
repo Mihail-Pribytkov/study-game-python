@@ -4,12 +4,13 @@ class Helicopter:
     def __init__(self, w, h):
         rc = randcell(w,h)
         rx, ry = rc[0], rc[1]
-        self.x = rx
+        self.x = ry 
         self.h = h
         self.w = w
-        self.y = ry
+        self.y = rx 
         self.tank = 0
         self.mxtank = 1
+        self.score = 0
 
     def move(self, dx, dy):
         nx = self.x + dx
@@ -19,4 +20,5 @@ class Helicopter:
             self.y = ny
 
     def print_stats(self):
-        print("TANK ", self.tank, "/", self.mxtank, sep="")
+        print("🪣 ", self.tank, "/", self.mxtank, sep="", end=" | ")
+        print("🏆 ", self.score)
